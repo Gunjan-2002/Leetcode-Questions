@@ -10,9 +10,14 @@
 class Solution {
     public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
         Map<TreeNode, TreeNode> parent_track = new HashMap<>();
+        // MARK PARENT NODE FOR EACH AND EVERY NODE
         markParent(root, parent_track, root);
+
+        // THEN CREATE VISITED MAP FOR EACH NODE 
         Map<TreeNode, Boolean> visited = new HashMap<>();
         Queue<TreeNode> queue = new LinkedList<>();
+
+        // START FROM TARGET NODE AND DO TRAVERSAL LIKE LEVEL ORDER TRAVERSAL
         queue.offer(target);
         visited.put(target, true);
         int curr_level = 0;
@@ -20,6 +25,8 @@ class Solution {
         while(!queue.isEmpty()){
             int size = queue.size();
 
+            // IF LEVEL == K IT MEANS THAT THE QUEUE HAS EXACT NODES VALUES THAT
+            // ARE K LEVEL DISTANCE.
             if(curr_level == k){
                 break;
             }
