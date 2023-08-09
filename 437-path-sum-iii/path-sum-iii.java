@@ -14,31 +14,29 @@
  * }
  */
 class Solution {
-    int ans=0;
+    int ans = 0;
     public int pathSum(TreeNode root, int targetSum) {
         if(root == null){
             return 0;
         }
 
-        numberOfPathFromRoot(root,targetSum);
+        findPath(root,targetSum);
         pathSum(root.left,targetSum);
         pathSum(root.right,targetSum);
 
         return ans;
     }
 
-    private void numberOfPathFromRoot(TreeNode root, int targetSum){
-        // if(root == null){
-        //     return;
-        // }
-        if (root == null || root.val == Math.pow(10,9)) return;
+    private void findPath(TreeNode root, int target){
+        if(root == null || root.val == Math.pow(10,9)){
+            return;
+        }
 
-
-        if(root.val == targetSum){
+        if(target == root.val){
             ans++;
         }
-        targetSum = targetSum - root.val;
-        numberOfPathFromRoot(root.left,targetSum);
-        numberOfPathFromRoot(root.right,targetSum);
+
+        findPath(root.left,target-root.val);
+        findPath(root.right,target-root.val);
     }
 }
