@@ -13,6 +13,8 @@
  *     }
  * }
  */
+
+
 class Solution {
     int preIndex = 0;
     TreeNode root = null;
