@@ -15,18 +15,16 @@
  */
 class Solution {
     public void flatten(TreeNode root) {
-        // if(root == null || (root.left == null && root.right == null)){
-        //     return;
-        // }
-
-        flat(root);
+        toLL(root);
     }
 
-    private TreeNode flat(TreeNode root){
-        if(root == null) return null;
+    private TreeNode toLL(TreeNode root){
+        if(root == null){
+            return null;
+        }
 
-        TreeNode leftChild = flat(root.left);
-        TreeNode rightChild = flat(root.right);
+        TreeNode leftChild = toLL(root.left);
+        TreeNode rightChild = toLL(root.right);
 
         TreeNode extremeRightOfLC = leftChild;
 
