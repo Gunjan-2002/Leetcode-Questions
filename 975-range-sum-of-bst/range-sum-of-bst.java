@@ -31,13 +31,13 @@ class Solution {
 
         // THIS WILL RECURSIVELY GIVE ME SUM FOR THE LEFT SUBTREE
         // IF LOW < ROOT.VALUE
-        if(low < root.val){
+        if(low <= root.val){
             sum += rangeSumBST(root.left,low,high);
         }
 
         // THIS WILL RECURSIVELY GIVE ME SUM FOR THE RIGHT SUBTREE
         // IF HIGH > ROOT.VALUE
-        if(high > root.val){
+        if(high >= root.val){
             sum += rangeSumBST(root.right,low,high);
         }
 
