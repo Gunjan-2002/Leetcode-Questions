@@ -1,37 +1,23 @@
 class Solution {
     public int maxArea(int[] height) {
-        int max=0;
+        int maxWater = Integer.MIN_VALUE;
 
-        int i=0;
-        int j=height.length-1;
+        int left=0;
+        int right=height.length-1;
 
-        while(i < j){
-            int lh = height[i];
-            int rh = height[j];
+        while(left < right){
+            int leftHeight = height[left];
+            int rightHeight = height[right];
+            int minHeight = Math.min(leftHeight,rightHeight);
 
-            int min_h = Math.min(lh,rh);
+            maxWater = Math.max(maxWater , minHeight*(right-left));
 
-            max = Math.max(max, min_h*(j-i));
-
-            if(lh < rh){
-                i++;
+            if(leftHeight < rightHeight){
+                left++;
             }else{
-                j--;
+                right--;
             }
         }
-
-        return max;
+        return maxWater;
     }
 }
-
-/*
-    Here we apply two pointer logic
-    first one from 0 and second one from last index
-
-    we will find height and width height=minimum of nums of
-    start and end. and width is end - start.
-
-    if start height is less than end then increment start else
-    decrement end.
-
-*/
