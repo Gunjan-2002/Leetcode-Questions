@@ -1,23 +1,15 @@
 class Solution {
     public int maxProfit(int[] prices) {
-        int n = prices.length;
+        int maxProfit = 0;
+        int lowestTillNow = Integer.MAX_VALUE;
 
-        int overallprofit = 0;
-        int profitIfSoldToday = 0;
-        int leastPrice = Integer.MAX_VALUE;
-
-        for(int i=0;i<n;i++){
-            if(prices[i] < leastPrice){
-                leastPrice = prices[i];
+        for(int i=0;i<prices.length;i++){
+            if(prices[i] < lowestTillNow){
+                lowestTillNow = prices[i];
             }
 
-            profitIfSoldToday = prices[i] - leastPrice;
-
-            if(profitIfSoldToday > overallprofit){
-                overallprofit = profitIfSoldToday;
-            }
+            maxProfit = Math.max(maxProfit, prices[i] - lowestTillNow); 
         }
-
-        return overallprofit;
+        return maxProfit;
     }
 }
